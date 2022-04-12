@@ -29,6 +29,11 @@ contract LanVar is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
         _setTokenURI(tokenId, uri);
     }
 
+    function updateTokenURI(uint256 tokenId, string memory uri) public {
+        require(_isApprovedOrOwner(msg.sender, tokenId), "Caller is not owner");
+        _setTokenURI(tokenId, uri);
+    }
+
     function getBalance() public onlyOwner view returns (uint256) {
         return address(this).balance;
     }

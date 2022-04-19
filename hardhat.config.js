@@ -1,5 +1,6 @@
 require("@nomiclabs/hardhat-waffle");
 require('@openzeppelin/hardhat-upgrades');
+require("@nomiclabs/hardhat-etherscan");
 require('dotenv').config()
 
 // This is a sample Hardhat task. To learn how to create your own go to
@@ -21,6 +22,9 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
 module.exports = {
   solidity: "0.8.4",
   defaultNetwork: "localhost",
+  etherscan: {
+    apiKey: process.env.BSCSCAN_API_KEY,
+  },
   networks: {
     localhost: {
       url: "http://127.0.0.1:8545"

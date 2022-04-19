@@ -31,7 +31,10 @@ Deploy contract to the local running node
 ```
 npx hardhat run scripts/deploy-script.js --network localhost
 ```
-
+Verify contract on testnet
+```
+npx hardhat verify --network testnet <contract address>
+```
 ##### Others commands
 ```shell
 npx hardhat accounts

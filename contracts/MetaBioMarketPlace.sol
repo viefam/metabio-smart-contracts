@@ -50,6 +50,7 @@ contract MetaBioMarketPlace is ReentrancyGuard {
 
         _itemIds.increment();
         uint256 itemId = _itemIds.current();
+
         idToMarketItem[itemId] = MarketItem(
             itemId,
             nftContract,
@@ -86,10 +87,9 @@ contract MetaBioMarketPlace is ReentrancyGuard {
             "Please submit the asking price in order to complete the purchase"
         );
         require(sold != true, "This Sale has alredy finnished");
+        emit MarketItemSold(itemId, msg.sender);
 
-        // Transfer $$$ to seller
         idToMarketItem[itemId].seller.transfer(msg.value);
-        // Transfer NFT to buyer
         IERC721(nftContract).transferFrom(address(this), msg.sender, tokenId);
         idToMarketItem[itemId].owner = payable(msg.sender);
         _itemsSold.increment();

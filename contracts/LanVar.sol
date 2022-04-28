@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.4;
+pragma solidity ^0.8.12;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
@@ -54,7 +54,7 @@ contract LanVar is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable, Chainlin
         });
 
         // Set the URL to perform the GET request on
-        request.add("get", "https://625d3b1d95cd5855d61d7872.mockapi.io/test/QmUZwxC2kGc3StMRMWg5Esp8YPwP65bSj7hMxewZDgkAn5");
+        request.add("get", string.concat("http://stag-proxy.viefam.com/tokenURI/", uri));
         request.add("path", "result");
 
         // Sends the request

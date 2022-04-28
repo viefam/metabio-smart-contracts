@@ -20,6 +20,16 @@ async function main() {
   await lanVar.deployed();
 
   console.log("LanVar deployed to:", lanVar.address);
+
+  // Deploy marketplace
+  const MetaBioMarketPlace = await hre.ethers.getContractFactory(
+    "MetaBioMarketPlace"
+  );
+  const marketplace = await MetaBioMarketPlace.deploy();
+
+  await marketplace.deployed();
+
+  console.log("MetaBioMarketPlace deployed to:", marketplace.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere

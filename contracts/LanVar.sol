@@ -12,8 +12,7 @@ contract LanVar is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable, Chainlin
     using Counters for Counters.Counter;
     using Chainlink for Chainlink.Request;
 
-    event MintSuccessful(string tokenURI, address owner);
-    event MintFail(string tokenURI, address owner);
+    event MintFinished(string tokenURI, address owner, uint256 tokenId, bool success);
 
     Counters.Counter private _tokenIdCounter;
     uint256 public constant MAX_SUPPLY = 10000000;
@@ -76,9 +75,9 @@ contract LanVar is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable, Chainlin
             _tokenIdCounter.increment();
             _safeMint(_request.owner, tokenId);
             _setTokenURI(tokenId, _request.tokenURI);
-            emit MintSuccessful(_request.tokenURI, _request.owner);
+            emit MintFinished(_request.tokenURI, _request.owner, tokenId, true);
         } else {
-            emit MintFail(_request.tokenURI, _request.owner);
+            emit MintFinished(_request.tokenURI, _request.owner, 0, false);
         }
     }
 

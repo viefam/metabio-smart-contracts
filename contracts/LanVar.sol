@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.12;
 
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
@@ -23,7 +24,10 @@ contract LanVar is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable, Chainlin
         address owner;
     }
 
-    mapping (bytes32 => requestInfo) public requests;
+    mapping (bytes32 => requestInfo) private requests;
+
+    IERC20 private token =  IERC20(0x2C8f56E5f468E1708555A9B334D94973509778E2);
+    uint256 private rewardAmount = 1 * 10 ** 18;
 
     address private oracle;
     bytes32 private jobId;
@@ -83,7 +87,11 @@ contract LanVar is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable, Chainlin
 
     function updateTokenURI(uint256 tokenId, string memory uri) public {
         require(_isApprovedOrOwner(msg.sender, tokenId), "Caller is not owner");
+        uint256 erc20Balance = token.balanceOf(address(this));
         _setTokenURI(tokenId, uri);
+        if (erc20Balance >= rewardAmount) {
+            token.transfer(msg.sender, rewardAmount);
+        }
     }
 
     function getBalance() public onlyOwner view returns (uint256) {

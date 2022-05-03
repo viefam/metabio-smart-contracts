@@ -6,21 +6,6 @@
 const hre = require("hardhat");
 
 async function main() {
-  // Hardhat always runs the compile task when running scripts with its command
-  // line interface.
-  //
-  // If this script is run directly using `node` you may want to call compile
-  // manually to make sure everything is compiled
-  // await hre.run('compile');
-
-  // We get the contract to deploy
-  const LanVar = await hre.ethers.getContractFactory("LanVar");
-  const lanVar = await LanVar.deploy();
-
-  await lanVar.deployed();
-
-  console.log("LanVar deployed to:", lanVar.address);
-
   // Deploy marketplace
   const MetaBioMarketPlace = await hre.ethers.getContractFactory(
     "MetaBioMarketPlace"

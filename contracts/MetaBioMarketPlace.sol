@@ -27,7 +27,7 @@ contract MetaBioMarketPlace is ReentrancyGuard {
         bool sold;
     }
 
-    mapping(uint256 => MarketItem) private idToMarketItem;
+    mapping(uint256 => MarketItem) private _idToMarketItem;
 
     event MarketItemCreated(
         uint256 indexed itemId,
@@ -51,7 +51,7 @@ contract MetaBioMarketPlace is ReentrancyGuard {
         _itemIds.increment();
         uint256 itemId = _itemIds.current();
 
-        idToMarketItem[itemId] = MarketItem(
+        _idToMarketItem[itemId] = MarketItem(
             itemId,
             nftContract,
             tokenId,
@@ -79,9 +79,10 @@ contract MetaBioMarketPlace is ReentrancyGuard {
         payable
         nonReentrant
     {
-        uint256 price = idToMarketItem[itemId].price;
-        uint256 tokenId = idToMarketItem[itemId].tokenId;
-        bool sold = idToMarketItem[itemId].sold;
+        MarketItem storage marketItem = _idToMarketItem[itemId];
+        uint256 price = marketItem.price;
+        uint256 tokenId = marketItem.tokenId;
+        bool sold = marketItem.sold;
         require(
             msg.value == price,
             "Please submit the asking price in order to complete the purchase"
@@ -89,11 +90,11 @@ contract MetaBioMarketPlace is ReentrancyGuard {
         require(sold != true, "This Sale has already finished");
         emit MarketItemSold(itemId, msg.sender);
 
-        idToMarketItem[itemId].seller.transfer(msg.value);
+        _idToMarketItem[itemId].seller.transfer(msg.value);
         IERC721(nftContract).transferFrom(address(this), msg.sender, tokenId);
-        idToMarketItem[itemId].owner = payable(msg.sender);
+        _idToMarketItem[itemId].owner = payable(msg.sender);
         _itemsSold.increment();
-        idToMarketItem[itemId].sold = true;
+        _idToMarketItem[itemId].sold = true;
     }
 
     function fetchMarketItems() public view returns (MarketItem[] memory) {
@@ -103,9 +104,9 @@ contract MetaBioMarketPlace is ReentrancyGuard {
 
         MarketItem[] memory items = new MarketItem[](unsoldItemCount);
         for (uint256 i = 0; i < itemCount; i++) {
-            if (idToMarketItem[i + 1].owner == address(0)) {
+            if (_idToMarketItem[i + 1].owner == address(0)) {
                 uint256 currentId = i + 1;
-                MarketItem storage currentItem = idToMarketItem[currentId];
+                MarketItem storage currentItem = _idToMarketItem[currentId];
                 items[currentId] = currentItem;
                 currentIndex += 1;
             }

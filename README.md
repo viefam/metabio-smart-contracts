@@ -22,6 +22,12 @@
   - [x] Send/Receive CSPR
   - [x] CSPR price chart
 
+## Client Demo
+
+- Demo Video: https://drive.google.com/file/d/1Ky1aIM3PbbabwFdjyUjXSkz2edAbHbKc/view
+
+- TestFlight: https://testflight.apple.com/join/M6DTlUAc
+
 ## Development
 
 ### Install

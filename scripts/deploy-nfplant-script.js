@@ -14,12 +14,12 @@ async function main() {
   // await hre.run('compile');
 
   // We get the contract to deploy
-  const LanVar = await hre.ethers.getContractFactory("LanVar");
-  const lanVar = await LanVar.deploy();
+  const NFPlant = await hre.ethers.getContractFactory("NFPlant");
+  const nfplant = await NFPlant.deploy();
 
-  await lanVar.deployed();
+  await nfplant.deployed();
 
-  console.log("LanVar deployed to:", lanVar.address);
+  console.log("NFPlant deployed to:", nfplant.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere

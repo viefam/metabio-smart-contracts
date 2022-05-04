@@ -22,6 +22,14 @@
   - [x] Send/Receive CSPR
   - [x] CSPR price chart
 
+## Addresses
+
+Kovan Network
+
+- NFPlant: 0xe839750E32bbE60DB5EF7101A7fB6c2eEb678e30
+
+- Marketplace: 0x6B3B71Ab4d25f952E01279E592c44c38680416eD
+
 ## Client Demo
 
 - Demo Video: https://drive.google.com/file/d/1Ky1aIM3PbbabwFdjyUjXSkz2edAbHbKc/view

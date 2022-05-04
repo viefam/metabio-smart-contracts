@@ -44,7 +44,7 @@ contract NFPlant is
     bytes32 private jobId;
     uint256 private fee;
 
-    constructor() ERC721("NFPlant", "LVN") {
+    constructor() ERC721("NFPlant", "NFP") {
         setPublicChainlinkToken();
         oracle = 0xc57B33452b4F7BB189bB5AfaE9cc4aBa1f7a4FD8;
         jobId = "d5270d1c311941d0b08bead21fea7747";

@@ -1,21 +1,21 @@
 {
-  "name": "plantverse-smart-contracts",
-  "version": "1.0.0",
-  "description": "Smart contract for Plantverse",
+  "name": "metabio-smart-contracts",
+  "version": "0.0.1",
+  "description": "Smart contracts for MetaBio",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/viefam/plantverse-smart-contracts.git"
+    "url": "git+https://github.com/viefam/metabio-smart-contracts.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/viefam/plantverse-smart-contracts/issues"
+    "url": "https://github.com/viefam/metabio-smart-contracts/issues"
   },
-  "homepage": "https://github.com/viefam/plantverse-smart-contracts#readme",
+  "homepage": "https://github.com/viefam/metabio-smart-contracts#readme",
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.5",
     "@nomiclabs/hardhat-etherscan": "^3.0.3",

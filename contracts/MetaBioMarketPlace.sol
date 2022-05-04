@@ -90,11 +90,11 @@ contract MetaBioMarketPlace is ReentrancyGuard {
         require(sold != true, "This Sale has already finished");
         emit MarketItemSold(itemId, msg.sender);
 
-        _idToMarketItem[itemId].seller.transfer(msg.value);
+        marketItem.seller.transfer(msg.value);
         IERC721(nftContract).transferFrom(address(this), msg.sender, tokenId);
-        _idToMarketItem[itemId].owner = payable(msg.sender);
+        marketItem.owner = payable(msg.sender);
         _itemsSold.increment();
-        _idToMarketItem[itemId].sold = true;
+        marketItem.sold = true;
     }
 
     function fetchMarketItems() public view returns (MarketItem[] memory) {

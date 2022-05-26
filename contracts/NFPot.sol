@@ -14,7 +14,7 @@ contract NFPot is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
     uint256 private constant MINT_PRICE = 0.0001 ether;
     mapping(string => bool) private _mintedUris;
 
-    constructor() ERC721("NFPot", "NFPot") {}
+    constructor() ERC721("NFPot", "POT") {}
 
     function payToMint(address to, string memory uri) public payable {
         require(msg.value >= MINT_PRICE, "Need to pay more");

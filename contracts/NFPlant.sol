@@ -75,7 +75,7 @@ contract NFPlant is
         // Set the URL to perform the GET request on
         request.add(
             "get",
-            string.concat("http://stag-proxy.viefam.com/tokenURI/", uri)
+            string.concat("https://stag.proxy.viefam.com/tokenURI/", uri)
         );
         request.add("path", "result");
 

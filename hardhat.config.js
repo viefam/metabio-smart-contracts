@@ -31,7 +31,7 @@ module.exports = {
   },
   defaultNetwork: "localhost",
   etherscan: {
-    apiKey: process.env.ETHSCAN_API_KEY,
+    apiKey: process.env.BSCSCAN_API_KEY,
   },
   networks: {
     localhost: {

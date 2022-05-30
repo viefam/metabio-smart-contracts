@@ -14,12 +14,12 @@ async function main() {
   // await hre.run('compile');
 
   // We get the contract to deploy
-  const NFPlant = await hre.ethers.getContractFactory("NFPlant");
-  const nFPlant = await NFPlant.deploy();
+  const MetaBioToken = await hre.ethers.getContractFactory("MetaBioToken");
+  const metaBioToken = await MetaBioToken.deploy();
 
-  await nFPlant.deployed();
+  await metaBioToken.deployed();
 
-  console.log("NFPlant deployed to:", nFPlant.address);
+  console.log("MetaBioToken deployed to:", metaBioToken.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere

@@ -16,26 +16,13 @@ contract NFPlant is
 {
     using Counters for Counters.Counter;
 
-    event MintFinished(
-        string tokenURI,
-        address owner,
-        uint256 tokenId,
-        bool success
-    );
-
     Counters.Counter private _tokenIdCounter;
     uint256 public constant MINT_PRICE = 0.0001 ether;
-    address private constant ERC20_TOKEN_ADDRESS = 0x2C8f56E5f468E1708555A9B334D94973509778E2;
 
     struct requestInfo {
         string tokenURI;
         address owner;
     }
-
-    mapping(bytes32 => requestInfo) private requests;
-
-    IERC20 private token = IERC20(ERC20_TOKEN_ADDRESS);
-    uint256 private rewardAmount = 1 * 10 ** decimals();
 
     constructor() ERC721("NFPlant", "PLT") {}
 
@@ -49,15 +36,6 @@ contract NFPlant is
         _tokenIdCounter.increment();
         _safeMint(to, tokenId);
         _setTokenURI(tokenId, uri);
-    }
-
-    function updateTokenURI(uint256 tokenId, string memory uri) public {
-        require(_isApprovedOrOwner(msg.sender, tokenId), "Caller is not owner");
-        uint256 erc20Balance = token.balanceOf(address(this));
-        _setTokenURI(tokenId, uri);
-        if (erc20Balance >= rewardAmount) {
-            token.transfer(msg.sender, rewardAmount);
-        }
     }
 
     function getBalance() public view onlyOwner returns (uint256) {

@@ -39,10 +39,6 @@ module.exports = {
     },
     hardhat: {
     },
-    kovan: {
-      accounts: [process.env.KOVAN_KEY],
-      url: "https://speedy-nodes-nyc.moralis.io/37da4fb881ff463ce0ed4bd6/eth/kovan"
-    },
     testnet: {
       url: "https://data-seed-prebsc-1-s1.binance.org:8545",
       chainId: 97,

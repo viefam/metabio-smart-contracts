@@ -10,6 +10,12 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 contract NFPot is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
     using Counters for Counters.Counter;
 
+    event PotMinted(
+        string tokenURI,
+        address owner,
+        uint256 tokenId
+    );
+
     Counters.Counter private _tokenIdCounter;
     uint256 private constant MINT_PRICE = 0.0001 ether;
     mapping(string => bool) private _mintedUris;
@@ -24,6 +30,8 @@ contract NFPot is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
         _mintedUris[uri] = true;
         _safeMint(to, tokenId);
         _setTokenURI(tokenId, uri);
+
+        emit PotMinted(uri, msg.sender, tokenId);
     }
 
     function isMinted(string memory uri) public view returns (bool) {

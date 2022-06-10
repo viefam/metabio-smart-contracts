@@ -62,16 +62,10 @@ Run network node
 npx hardhat node
 ```
 
-Deploy MetaBioMarketPlace contract to the local running node.
+Deploy contract to the local running node.
 
 ```
-npx hardhat run scripts/deploy-marketplace-script.js --network localhost
-```
-
-NFPlant smart contract cannot deploy to localhost network. Please deploy it to kovan instead.
-
-```
-npx hardhat run scripts/deploy-nfplant-script.js --network kovan
+npx hardhat run scripts/<deploy script> --network localhost
 ```
 
 Verify contract on testnet

@@ -21,7 +21,7 @@ contract NFPot is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
 
     constructor() ERC721("NFPot", "POT") {}
 
-    function payToMint(address to, string memory uri) public payable {
+    function mint(address to, string memory uri) public onlyOwner {
         require(isMinted(uri) == false, "Already minted");
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();

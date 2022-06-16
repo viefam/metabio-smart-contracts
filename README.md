@@ -17,10 +17,7 @@
   - [ ] User needs to purchase plant pot to mint plant
 
 - [x] MetaBioToken
-- [x] Dashboard
-  - [x] View CSPR balance
-  - [x] Send/Receive CSPR
-  - [x] CSPR price chart
+
 
 ## Addresses
 

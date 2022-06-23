@@ -42,11 +42,7 @@ async function main() {
 
   await metaBioAudit.deployed();
 
-  console.log(
-    "MetaBioAudit deployed to:",
-    metaBioAudit.address,
-    metaBioAudit.name()
-  );
+  console.log("MetaBioAudit deployed to:", metaBioAudit.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere

@@ -57,8 +57,6 @@ contract MetaBioAudit is
     /// @dev proposals index => MetaBioProposal
     mapping(uint256 => MetaBioProposal) public proposals;
 
-    /// solhint-disable-next-line no-empty-blocks
-    constructor() initializer {}
 
     /// @dev Initializes the contract, like a contructor.
     function initialize(

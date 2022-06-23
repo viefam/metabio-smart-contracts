@@ -74,12 +74,9 @@ contract MetaBioMarketPlace is ReentrancyGuard {
         );
     }
 
-    function purchaseMarketItem(address nftContract, uint256 itemId)
-        public
-        payable
-        nonReentrant
-    {
+    function purchaseMarketItem(address nftContract, uint256 itemId) public payable nonReentrant {
         MarketItem storage marketItem = _idToMarketItem[itemId];
+        require(marketItem.itemId > 0, "Item is not available");
         uint256 price = marketItem.price;
         uint256 tokenId = marketItem.tokenId;
         bool sold = marketItem.sold;
@@ -87,7 +84,7 @@ contract MetaBioMarketPlace is ReentrancyGuard {
             msg.value == price,
             "Please submit the asking price in order to complete the purchase"
         );
-        require(sold != true, "This Sale has already finished");
+        require(sold != true, "This sale has already finished");
         emit MarketItemSold(itemId, msg.sender);
 
         marketItem.seller.transfer(msg.value);
@@ -107,7 +104,7 @@ contract MetaBioMarketPlace is ReentrancyGuard {
             if (_idToMarketItem[i + 1].owner == address(0)) {
                 uint256 currentId = i + 1;
                 MarketItem storage currentItem = _idToMarketItem[currentId];
-                items[currentId] = currentItem;
+                items[currentIndex] = currentItem;
                 currentIndex += 1;
             }
         }

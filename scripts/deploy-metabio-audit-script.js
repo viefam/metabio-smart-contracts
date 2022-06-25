@@ -15,10 +15,10 @@ async function main() {
 
   // We get the contract to deploy
   const MetaBioAudit = await ethers.getContractFactory("MetaBioAudit");
-  const votingDelay = 30; // seconds
+  const votingDelay = 0; // seconds
   const votingPeriod = 120; // seconds
   const proposalThreshold = 100; // tokens
-  const quorumFaction = 50; // %
+  const quorumFaction = 30; // %
 
   const metaBioAudit = await upgrades.deployProxy(
     MetaBioAudit,
@@ -29,7 +29,7 @@ async function main() {
         "0x6ed5429a8A73947d7aE4264D9484B43537BCB200",
         "0x53E66b4a3af5392a228891455082232b07903C3D",
       ],
-      "0x47D7007DAeC680a9A161D9da8C9E0917fd6573Ce",
+      "0x833cFF7b30b1EB55fF59aC81fd9879d5dCF5A836",
       votingDelay,
       votingPeriod,
       proposalThreshold,

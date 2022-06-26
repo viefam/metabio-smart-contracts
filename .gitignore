@@ -7,7 +7,8 @@ typechain
 #Hardhat files
 cache
 artifacts
+.openzeppelin
+abi
 
 #IDE files
 .idea
-.openzeppelin
